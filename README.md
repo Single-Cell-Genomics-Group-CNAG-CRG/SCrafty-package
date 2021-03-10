@@ -1,4 +1,4 @@
-# CNAGSCG
+# CNAGSCG-package
 R package with functions we can all benefit from
 
 ## Before we begin
