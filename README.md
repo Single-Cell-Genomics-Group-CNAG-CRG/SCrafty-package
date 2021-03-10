@@ -10,6 +10,7 @@ Keep in mind that these being a shared package maintained by us all it is import
 ## Adding New Functions
 New functions need to be written in an R script file following the predefined format **TODO:check reference function** and saved in the `R/` directory. For ease of use the R script name should be the same as the function name.
 
-After adding a new function make sure everything runs smoothly by:
-1- running `devtools::load_all()`, this runs a mock build of the package and allows you to test the function runs correctly within the package environment. 
-2- running `devtools::check()`, after making sure the function runs well we need to be sure that all the moving parts of the foofactors package still work in the package environment. `devtools::check()`is the equivalent of running `R CMD check` in the terminal.
+After adding a new function make sure everything runs smoothly by:\
+1- running `devtools::load_all()`, this runs a mock build of the package and allows you to test the function runs correctly within the package environment. \
+2- running `devtools::check()`, after making sure the function runs well we need to be sure that all the moving parts of the foofactors package still work in the package environment. `devtools::check()`is the equivalent of running `R CMD check` in the terminal.\
+
