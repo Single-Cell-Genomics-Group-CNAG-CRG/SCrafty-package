@@ -2,9 +2,21 @@ Package: CNAGSCG
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Authors@R: 
+  c(person(given = "Marc",
+           family = "Elosua",
+           role = "aut",
+           email = "marc.elosua@cnag.crg.eu"),
+    person(given = "Charmander",
+           family = "Fire",
+           role = "Boss",
+           email = charmander@kanto.pkm),
+    person(given = "Bulbasaur",
+           family = "Plant",
+           role = "None",
+           email = bulbasaur@kanto.pkm))
+Maintainer: The package maintainer Single-Cell Genomics team @ CNAG-CRG
+Description: This packages aims at being a recollection of common functions we use in our day to day life analyzing single-cell data.
     Use four spaces when indenting paragraphs within the Description.
 License: MIT + file LICENSE
 Encoding: UTF-8
