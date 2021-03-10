@@ -5,19 +5,30 @@ Version: 0.1.0
 Authors@R: 
   c(person(given = "Marc",
            family = "Elosua",
-           role = "aut",
+           role = c("aut", "cre"),
            email = "marc.elosua@cnag.crg.eu"),
     person(given = "Charmander",
            family = "Fire",
-           role = "Boss",
-           email = charmander@kanto.pkm),
+           role = "ctb",
+           email = "charmander@kanto.pkm"),
     person(given = "Bulbasaur",
            family = "Plant",
-           role = "None",
-           email = bulbasaur@kanto.pkm))
-Maintainer: The package maintainer Single-Cell Genomics team @ CNAG-CRG
+           role = "ctb",
+           email = "bulbasaur@kanto.pkm"))
 Description: This packages aims at being a recollection of common functions we use in our day to day life analyzing single-cell data.
     Use four spaces when indenting paragraphs within the Description.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    Seurat,
+    dplyr,
+    stringr,
+    ggplot2,
+    tidyr,
+    tibble,
+    RColorBrewer
