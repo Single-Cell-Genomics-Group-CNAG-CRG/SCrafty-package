@@ -36,7 +36,7 @@ devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", 
 ```
 
 ## Before we begin
-Keep in mind that these being a shared package maintained by us all it is important we stick to consitent best practices so we can all read other peoples code and contribute on top of each other. When adding new functions or modifying pre-existing ones please use **pull requests** so someone else can check your code prior to merging in the main branch.\
+Keep in mind that these being a shared package maintained by us all it is important we stick to consistent best practices so we can all read other peoples code and contribute on top of each other. When adding new functions or modifying pre-existing ones please use **pull requests** so someone else can check your code prior to merging in the main branch.\
 * Best practices on how to write an R package are detailed in Hadley Wickham's [book](https://r-pkgs.org/).\
 * Best practices on R function writing can be found  in the books [`R for Data Science`](https://r4ds.had.co.nz/functions.html) and the [`Functions chapter of Advanced R`](https://adv-r.hadley.nz/functions.html).\
 * Best practices on how to write R code can be found [here](https://www.datanovia.com/en/blog/r-coding-style-best-practices/) and [here](https://style.tidyverse.org/index.html#). Use package `lintr` to make sure the basic best practices are met. \

@@ -30,7 +30,7 @@ devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", 
 ## Before we begin
 
 Keep in mind that these being a shared package maintained by us all it
-is important we stick to consitent best practices so we can all read
+is important we stick to consistent best practices so we can all read
 other peoples code and contribute on top of each other. When adding new
 functions or modifying pre-existing ones please use **pull requests** so
 someone else can check your code prior to merging in the main branch.  
