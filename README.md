@@ -54,14 +54,15 @@ should be the same as the function name.
 After adding a new function make sure everything runs smoothly by:  
 1- running `devtools::load_all()`, this runs a mock build of the package
 and allows you to test the function runs correctly within the package
-environment.  
-2- running `devtools::check()`, after making sure the function runs well
+environment.  \
+2- runninf `devtools::document()`to build the documentation for the function in `man/` and `NAMESPACE`. Check will return error if the documentation is not present for a function in `R/` is not present. \
+3- running `devtools::check()`, after making sure the function runs well
 we need to be sure that all the moving parts of the foofactors package
 still work in the package environment. `devtools::check()`is the
-equivalent of running `R CMD check` in the terminal.  
-3- Add a unit test for the function via `devtools::use_test("foo")`.
+equivalent of running `R CMD check` in the terminal. \
+4- Add a unit test for the function via `devtools::use_test("foo")`.
 This will open an rscript named **test-fbind.R** in `test/testthat`. To
-check that the unit test runs properly you can run `devtools::test()`. 
+check that the unit test runs properly you can run `devtools::test()`. \
 
 ## Examples
 
