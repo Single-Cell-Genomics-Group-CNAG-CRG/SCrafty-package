@@ -8,7 +8,7 @@ Keep in mind that these being a shared package maintained by us all it is import
 * Best practices on how to write R code [here](https://www.datanovia.com/en/blog/r-coding-style-best-practices/). Use package `lintr` to make sure the basic best practices are met. 
 
 ## Adding New Functions
-New functions need to be written in an R script file following the predefined format **TODO:check reference function** and saved in the `R/` directory. For ease of use the R script name should be the same as the function name.
+New functions need to be written in an R script file following the predefined format as shown in the toy function `fbind()` and saved in the `R/` directory. For ease of use the R script name should be the same as the function name.
 
 After adding a new function make sure everything runs smoothly by:\
 1- running `devtools::load_all()`, this runs a mock build of the package and allows you to test the function runs correctly within the package environment. \
