@@ -7,7 +7,7 @@
 #' @param gene_type Character string specifying if the gene vector are SYMBOL or ENSEMBLE identifiers. By default SYMBOL, can also be ENSEMBL.
 #' @param annotation Character string specifying specifying the annotation of the organism to use. By default human org.Hs.eg.db but you can also choose mouse org.Mm.eg.db.
 #'
-#' @return Show plot image in Viewer pane
+#' @return Named vector with ENTREZID as the values.
 #' @export
 #' @examples
 #' \dontrun{
