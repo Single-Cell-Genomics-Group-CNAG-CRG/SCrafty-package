@@ -42,7 +42,7 @@ Keep in mind that these being a shared package maintained by us all it is import
 * Best practices on how to write R code can be found [here](https://www.datanovia.com/en/blog/r-coding-style-best-practices/) and [here](https://style.tidyverse.org/index.html#). Use package `lintr` to make sure the basic best practices are met. \
 
 ## Adding New Functions
-New functions need to be written in an R script file following the predefined format as shown in the toy function [`fbind()`](https://github.com/Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package/blob/main/R/fbind.R) and saved in the `R/` directory. For ease of use the R script name should be the same as the function name.
+New functions need to be written in an R script file following the predefined format as shown in the toy function [`fbind()`](https://github.com/Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package/blob/main/R/fbind.R) and saved in the `R/` directory. For ease of use the R script name should be the same as the function name. This can be done by running `usethis::use_r("fbind")` which will initialize the R script in the right directory.
 
 After adding a new function make sure everything runs smoothly by:\
 1- running `devtools::load_all()`, this runs a mock build of the package and allows you to test the function runs correctly within the package environment. \

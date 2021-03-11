@@ -51,7 +51,9 @@ New functions need to be written in an R script file following the
 predefined format as shown in the toy function
 [`fbind()`](https://github.com/Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package/blob/main/R/fbind.R)
 and saved in the `R/` directory. For ease of use the R script name
-should be the same as the function name.
+should be the same as the function name. This can be done by running
+`usethis::use_r("fbind")` which will initialize the R script in the
+right directory.
 
 After adding a new function make sure everything runs smoothly by:  
 1- running `devtools::load_all()`, this runs a mock build of the package
