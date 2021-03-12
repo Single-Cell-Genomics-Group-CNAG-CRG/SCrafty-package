@@ -25,15 +25,16 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    Seurat,
+    AnnotationDbi,
     dplyr,
-    stringr,
+    GOstats,
     ggplot2,
-    tidyr,
-    tibble,
-    RColorBrewer,
-    rstudioapi,
+    methods,
     org.Hs.eg.db,
     org.Mm.eg.db,
-    AnnotationDbi,
-    GOstats
+    RColorBrewer,
+    rstudioapi,
+    Seurat,
+    stringr,
+    tidyr,
+    tibble

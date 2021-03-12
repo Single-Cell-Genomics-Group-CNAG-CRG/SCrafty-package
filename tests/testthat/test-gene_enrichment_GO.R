@@ -1,4 +1,5 @@
 test_that("gene_enrichment_GO works", {
+  library(GOstats)
   gene_de <- c("MS4A1", "CD79A", "CD79B")
   gene_universe <- c("HLA-DRA", "AIF1", "C1QA", "LYZ", "SELENOP", "ADAMDEC1",
   "CD14", "CD68", "IGF1", "LGMN", "AXL", "C5AR1", "CD163", "CD163L1", "CD209",
@@ -14,8 +15,8 @@ test_that("gene_enrichment_GO works", {
     gene_universe = gene_universe,
     gene_type = "SYMBOL",
     annotation = "org.Hs.eg.db",
-    pvalueCutoff = 0.05,
-    testDirection = "over",
+    pvalue_cutoff = 0.05,
+    test_direction = "over",
     ontology = "BP")
 
   expect_equal(is(GO_results), c("GOHyperGResult", "HyperGResultBase"))

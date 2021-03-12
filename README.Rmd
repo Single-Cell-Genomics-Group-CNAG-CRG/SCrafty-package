@@ -39,7 +39,7 @@ devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", 
 Keep in mind that these being a shared package maintained by us all it is important we stick to consistent best practices so we can all read other peoples code and contribute on top of each other. When adding new functions or modifying pre-existing ones please use **pull requests** so someone else can check your code prior to merging in the main branch.\
 * Best practices on how to write an R package are detailed in Hadley Wickham's [book](https://r-pkgs.org/).\
 * Best practices on R function writing can be found  in the books [`R for Data Science`](https://r4ds.had.co.nz/functions.html) and the [`Functions chapter of Advanced R`](https://adv-r.hadley.nz/functions.html).\
-* Best practices on how to write R code can be found [here](https://www.datanovia.com/en/blog/r-coding-style-best-practices/) and [here](https://style.tidyverse.org/index.html#). Use package `lintr` to make sure the basic best practices are met. \
+* Best practices on how to write R code can be found [here](https://www.datanovia.com/en/blog/r-coding-style-best-practices/) and [here](https://style.tidyverse.org/index.html#). Use package `lintr` to make sure the basic best practices are met. You can run `lintr::lint_dir()` to lint a specific directory or `lintr::lint_package()` to lint all the files in the package.\
 
 ## Adding New Functions
 New functions need to be written in an R script file following the predefined format as shown in the toy function [`fbind()`](https://github.com/Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package/blob/main/R/fbind.R) and saved in the `R/` directory. For ease of use the R script name should be the same as the function name. This can be done by running `usethis::use_r("fbind")` which will initialize the R script in the right directory.
@@ -60,6 +60,7 @@ library(CNAGSCG)
 library(ggplot2)
 library(dplyr)
 library(Seurat)
+library(GOstats)
 ```
 
 If you are going to use Seurat object for function examples please use datasets from `SeuratData` to run the vignette so we can all recreate the examples easily.
@@ -72,6 +73,31 @@ library(SeuratData)
 Under development...👩💻 🧑💻
 
 ### GO analysis
+Here is a set of funtions to compute GO analysis:
+```{r}
+gene_de <- c("MS4A1", "CD79A", "CD79B")
+gene_universe <- c("HLA-DRA", "AIF1", "C1QA", "LYZ", "SELENOP", "ADAMDEC1",
+"CD14", "CD68", "IGF1", "LGMN", "AXL", "C5AR1", "CD163", "CD163L1", "CD209",
+"CSF1R", "IL10", "IL10RA", "IL13RA1", "NRP1", "NRP2", "SDC3", "SIGLEC1",
+"TGFBI", "TGFBR1", "EEF1A1", "OAZ1", "RPL15", "RPL19", "RPS19", "RPS29",
+"TPT1", "UBA52", "APOE", "FCGRT", "MKI67", "PCLAF", "RRM2", "CD1C", "CLC",
+"IL4", "TPSAB1", "CPA3", "NRG1", "RETN", "EREG", "ACOD1", "TNIP3", "VCAN",
+"INHBA", "CXCL5", "HTRA1", "SPP1", "HSPA1B", "CXCR2", "PI3", "PROK2",
+"HSPA6", "NCCRP1", "LAD1", "CCL22", "MS4A1", "CD79A", "CD79B")
+
+GO_results <- gene_enrichment_GO(
+  gene_de = gene_de,
+  gene_universe = gene_universe,
+  gene_type = "SYMBOL",
+  annotation = "org.Hs.eg.db",
+  pvalue_cutoff = 0.05,
+  test_direction = "over",
+  ontology = "BP")
+
+knitr::kable(summary(GO_results))
+```
+
+Visualization...
 Under development...👩💻 🧑💻
 
 ### Preview
