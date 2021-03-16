@@ -1,6 +1,6 @@
 Package: SCrafty
 Type: Package
-Title: What the Package Does (Title Case)
+Title: R package to store useful functions to analyze single-cell data that the entire team can benefit.
 Version: 0.1.0
 Authors@R: 
   c(person(given = "Marc",
