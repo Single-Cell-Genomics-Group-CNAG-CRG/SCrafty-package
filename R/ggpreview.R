@@ -21,8 +21,7 @@
 #' ggpreview(x = tmp_plt, w = 9, h = 4, units = "in")
 #'}
 
-ggpreview <- function(x, w = 5, h = 5, dpi = 150,
-                      units = "in") {
+ggpreview <- function(x, w = 5, h = 5, dpi = 150, units = "in") {
   
   # Test valid input
   if (!units %in% c("in", "px", "cm", "mm")) {
