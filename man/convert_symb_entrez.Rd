@@ -8,8 +8,8 @@ Saves the plot in a tmp location and loads it as an image.}
 \usage{
 convert_symb_entrez(
   gene_vec,
-  gene_type = c("SYMBOL", "ENSEMBL"),
-  annotation = c("org.Hs.eg.db", "org.Mm.eg.db")
+  gene_type = "SYMBOL",
+  annotation = "org.Hs.eg.db"
 )
 }
 \arguments{

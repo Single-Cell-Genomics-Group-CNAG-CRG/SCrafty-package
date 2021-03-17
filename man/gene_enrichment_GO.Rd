@@ -8,11 +8,11 @@ differentially expressed genes within the specified gene universe.}
 gene_enrichment_GO(
   gene_de,
   gene_universe,
-  gene_type = c("SYMBOL", "ENSEMBL"),
+  gene_type = "SYMBOL",
   pvalue_cutoff = 0.05,
   test_direction = "over",
-  annotation = c("org.Hs.eg.db", "org.Mm.eg.db"),
-  ontology = c("BP", "CC", "MF")
+  annotation = "org.Hs.eg.db",
+  ontology = "BP"
 )
 }
 \arguments{
@@ -62,8 +62,8 @@ differentially expressed genes within the specified gene universe.
   gene_universe = gene_universe,
   gene_type = "SYMBOL",
   annotation = "org.Hs.eg.db",
-  pvalueCutoff = 0.05,
-  testDirection = "over",
+  pvalue_cutoff = 0.05,
+  test_direction = "over",
   ontology = "BP")
 }
 }
