@@ -7,6 +7,8 @@
 #' @param w width in inches
 #' @param h height in inches
 #' @param dpi resolution
+#' @param units character string specifying the units of the dimensions.
+#'     By default in, inches, but it can also be px, cm, or mm.
 #'
 #' @return Show plot image in Viewer pane
 #' @export
@@ -16,10 +18,11 @@
 #' df <- data.frame(x = 1:10, y = 1:10)
 #' tmp_plt <- ggplot2::ggplot(df, ggplot2::aes(x = x, y = y)) +
 #' ggplot2::geom_point()
-#' ggpreview(x = tmp_plt, w = 9, h = 4)
+#' ggpreview(x = tmp_plt, w = 9, h = 4, units = "in")
 #'}
 
-ggpreview <- function(x, w = 5, h = 5, dpi = 150) {
+ggpreview <- function(x, w = 5, h = 5, dpi = 150,
+                      units = c("in", "px", "cm", "mm")) {
 
   tmp <- tempfile(fileext = ".png")
 
@@ -28,7 +31,7 @@ ggpreview <- function(x, w = 5, h = 5, dpi = 150) {
     width = w,
     height = h,
     res = dpi,
-    units = "in")
+    units = units)
 
   print(x)
 

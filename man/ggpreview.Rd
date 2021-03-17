@@ -5,7 +5,7 @@
 \title{This function allows you to see plots inline, especially useful when trying
 to format font sizes.}
 \usage{
-ggpreview(x, w = 5, h = 5, dpi = 150)
+ggpreview(x, w = 5, h = 5, dpi = 150, units = c("in", "px", "cm", "mm"))
 }
 \arguments{
 \item{x}{plot to visualize}
@@ -15,6 +15,9 @@ ggpreview(x, w = 5, h = 5, dpi = 150)
 \item{h}{height in inches}
 
 \item{dpi}{resolution}
+
+\item{units}{character string specifying the units of the dimensions.
+By default in, inches, but it can also be px, cm, or mm.}
 }
 \value{
 Show plot image in Viewer pane
@@ -28,6 +31,6 @@ library(ggplot2)
 df <- data.frame(x = 1:10, y = 1:10)
 tmp_plt <- ggplot2::ggplot(df, ggplot2::aes(x = x, y = y)) +
 ggplot2::geom_point()
-ggpreview(x = tmp_plt, w = 9, h = 4)
+ggpreview(x = tmp_plt, w = 9, h = 4, units = "in")
 }
 }
