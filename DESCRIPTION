@@ -1,7 +1,7 @@
 Package: SCrafty
 Type: Package
 Title: R package to store useful functions to analyze single-cell data that
-    the entire team can benefit.
+    the entire team can benefit
 Description: This packages aims at being a recollection of common functions we
     use in our day to day life analyzing single-cell data.
 Version: 0.1.0
