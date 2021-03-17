@@ -22,7 +22,12 @@
 #'}
 
 ggpreview <- function(x, w = 5, h = 5, dpi = 150,
-                      units = c("in", "px", "cm", "mm")) {
+                      units = "in") {
+  
+  # Test valid input
+  if (!units %in% c("in", "px", "cm", "mm")) {
+    stop("units has to be: in, px, cm, or mm")
+  }
 
   tmp <- tempfile(fileext = ".png")
 
