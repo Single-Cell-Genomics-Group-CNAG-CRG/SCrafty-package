@@ -22,9 +22,19 @@
 #'}
 
 convert_symb_entrez <- function(gene_vec,
-                                gene_type  = c("SYMBOL", "ENSEMBL"),
-                                annotation = c("org.Hs.eg.db", "org.Mm.eg.db"))
-  {
+                                gene_type  = "SYMBOL",
+                                annotation = "org.Hs.eg.db") {
+  
+  # Test valid input
+  if (!gene_type %in% c("SYMBOL", "ENSEMBL")) {
+    stop("gene_type has to be: SYMBOL or ENSEMBL")
+  }
+  
+  if (!annotation %in% c("org.Hs.eg.db", "org.Mm.eg.db")) {
+    stop("annotation has to be: org.Hs.eg.db or org.Mm.eg.db")
+  }
+  
+  # Run separate function for human or mouse
   if (annotation == "org.Hs.eg.db") {
     # Convert symbols to ENTREZID
     de_entrezid <- AnnotationDbi::mapIds(

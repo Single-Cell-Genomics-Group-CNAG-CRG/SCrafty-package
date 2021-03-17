@@ -5,7 +5,7 @@
 \title{This function allows you to see plots inline, especially useful when trying
 to format font sizes.}
 \usage{
-ggpreview(x, w = 5, h = 5, dpi = 150, units = c("in", "px", "cm", "mm"))
+ggpreview(x, w = 5, h = 5, dpi = 150, units = "in")
 }
 \arguments{
 \item{x}{plot to visualize}

@@ -36,24 +36,37 @@
 #'   gene_universe = gene_universe,
 #'   gene_type = "SYMBOL",
 #'   annotation = "org.Hs.eg.db",
-#'   pvalueCutoff = 0.05,
-#'   testDirection = "over",
+#'   pvalue_cutoff = 0.05,
+#'   test_direction = "over",
 #'   ontology = "BP")
 #' }
 
 gene_enrichment_GO <- function(gene_de,
                                gene_universe,
-                               gene_type  = c("SYMBOL", "ENSEMBL"),
+                               gene_type  = "SYMBOL",
                                pvalue_cutoff = 0.05,
                                test_direction = "over",
-                               annotation = c("org.Hs.eg.db", "org.Mm.eg.db"),
-                               ontology = c("BP", "CC", "MF")) {
-
-  # Convert Target genes from symbol to entrezID
+                               annotation = "org.Hs.eg.db",
+                               ontology = "BP") {
+  
+  # Test valid input
+  if (!gene_type %in% c("SYMBOL", "ENSEMBL")) {
+    stop("gene_type has to be: SYMBOL or ENSEMBL")
+  }
+  
+  if (!annotation %in% c("org.Hs.eg.db", "org.Mm.eg.db")) {
+    stop("annotation has to be: org.Hs.eg.db or org.Mm.eg.db")
+  }
+  
+  if (!ontology %in% c("BP", "CC", "MF")) {
+    stop("ontology has to be: BP, CC or MF")
+  }
+  
+  # Convert Target genes from symbol/ensembl to entrezID
   target_enrich <- convert_symb_entrez(gene_vec = unique(gene_de),
                                        annotation = annotation)
 
-  # Convert Universe genes from symbol to entrezID
+  # Convert Universe genes from symbol/ensembl to entrezID
   univers_g <- convert_symb_entrez(gene_vec = unique(gene_universe),
                                    annotation = annotation)
 
@@ -65,7 +78,7 @@ gene_enrichment_GO <- function(gene_de,
     annotation = annotation,
     ontology = ontology,
     pvalueCutoff = pvalue_cutoff,
-            testDirection = test_direction)
+    testDirection = test_direction)
 
   # Carry out hyper geometric test
   hgOver <- GOstats::hyperGTest(params)
