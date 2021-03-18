@@ -1,9 +1,10 @@
 test_that("convert_symb_entrez works for human-symbol", {
   symbol_vec <- c("MS4A1", "CD4", "FOXP3")
 
-  entrezid_vec <- convert_symb_entrez(
+  entrezid_vec <- convert_geneid(
     gene_vec = symbol_vec,
-    gene_type = "SYMBOL",
+    gene_from = "SYMBOL",
+    gene_to = "ENTREZID",
     annotation = "org.Hs.eg.db")
 
   expect_vec <- c("931", "920", "50943")
@@ -16,9 +17,10 @@ test_that("convert_symb_entrez works for human-symbol", {
 test_that("convert_symb_entrez works for mouse-symbol", {
   symbol_vec <- c("Ms4a1", "Cd4", "Foxp3")
 
-  entrezid_vec <- convert_symb_entrez(
+  entrezid_vec <- convert_geneid(
     gene_vec = symbol_vec,
-    gene_type = "SYMBOL",
+    gene_from = "SYMBOL",
+    gene_to = "ENTREZID",
     annotation = "org.Mm.eg.db")
 
   expect_vec <- c("12482", "12504", "20371")
