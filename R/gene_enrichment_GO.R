@@ -55,11 +55,11 @@ gene_enrichment_GO <- function(gene_de,
   
   # Test valid input
   if (!gene_from %in% c("SYMBOL", "ENSEMBL", "ENTREZID", "UNIGENE")) {
-    stop("gene_from has to be: SYMBOL or ENSEMBL")
+    stop("gene_from has to be: SYMBOL, ENSEMBL, ENTREZID, or UNIGENE")
   }
   
   if (!gene_to %in% c("SYMBOL", "ENSEMBL", "ENTREZID", "UNIGENE")) {
-    stop("gene_to has to be: SYMBOL or ENSEMBL")
+    stop("gene_to has to be: SYMBOL, ENSEMBL, ENTREZID, or UNIGENE")
   }
   
   if (!annotation %in% c("org.Hs.eg.db", "org.Mm.eg.db")) {
