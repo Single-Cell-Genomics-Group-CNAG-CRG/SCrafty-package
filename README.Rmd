@@ -56,7 +56,7 @@ Bonus, if your package requires a dependency not found the file DESCRITPION sect
 
 Add examples of functions below:
 ```{r example}
-library(CNAGSCG)
+library(SCrafty)
 library(ggplot2)
 library(dplyr)
 library(Seurat)
@@ -88,7 +88,8 @@ gene_universe <- c("HLA-DRA", "AIF1", "C1QA", "LYZ", "SELENOP", "ADAMDEC1",
 GO_results <- gene_enrichment_GO(
   gene_de = gene_de,
   gene_universe = gene_universe,
-  gene_type = "SYMBOL",
+  gene_from  = "SYMBOL",
+  gene_to  = "ENTREZID",
   annotation = "org.Hs.eg.db",
   pvalue_cutoff = 0.05,
   test_direction = "over",

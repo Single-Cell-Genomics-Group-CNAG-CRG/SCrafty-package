@@ -63,14 +63,15 @@ and allows you to test the function runs correctly within the package
 environment.  
 2- running `devtools::document()`to build the documentation for the
 function in `man/` and `NAMESPACE`. Check will return error if the
-documentation is not present for a function in `R/` is not present.  
+documentation for a function in `R/` is not present.  
 3- running `devtools::check()`, after making sure the function runs well
-we need to be sure that all the moving parts of the foofactors package
-still work in the package environment. `devtools::check()`is the
-equivalent of running `R CMD check` in the terminal.  
-4- Add a unit test for the function via `devtools::use_test("foo")`.
+we need to be sure that all the moving parts of the package still work
+in the package environment. `devtools::check()`is the equivalent of
+running `R CMD check` in the terminal.  
+4- Add a unit test for the function via `devtools::use_test("fbind")`.
 This will open an rscript named **test-fbind.R** in `test/testthat`. To
-check that the unit test runs properly you can run `devtools::test()`.  
+check that all the unit tests runs properly you can run
+`devtools::test()`.  
 5- Lastly, if you add an example in `README.Rmd` compile it using
 `devtools::build_readme()`.  
 Bonus, if your package requires a dependency not found the file
@@ -82,7 +83,7 @@ DESCRITPION section imports you can add it by running
 Add examples of functions below:
 
 ``` r
-library(CNAGSCG)
+library(SCrafty)
 library(ggplot2)
 library(dplyr)
 #> 
@@ -171,10 +172,10 @@ the examples easily.
 # devtools::install_github('satijalab/seurat-data')
 library(SeuratData)
 #> Registered S3 method overwritten by 'cli':
-#>   method     from    
-#>   print.boxx spatstat
+#>   method     from         
+#>   print.boxx spatstat.geom
 #> ── Installed datasets ───────────────────────────────────── SeuratData v0.2.1 ──
-#> ✓ stxBrain 0.1.1
+#> ✓ pbmcMultiome 0.1.0                    ✓ stxBrain     0.1.1
 #> ────────────────────────────────────── Key ─────────────────────────────────────
 #> ✓ Dataset loaded successfully
 #> > Dataset built with a newer version of Seurat than installed
@@ -203,7 +204,8 @@ gene_universe <- c("HLA-DRA", "AIF1", "C1QA", "LYZ", "SELENOP", "ADAMDEC1",
 GO_results <- gene_enrichment_GO(
   gene_de = gene_de,
   gene_universe = gene_universe,
-  gene_type = "SYMBOL",
+  gene_from  = "SYMBOL",
+  gene_to  = "ENTREZID",
   annotation = "org.Hs.eg.db",
   pvalue_cutoff = 0.05,
   test_direction = "over",

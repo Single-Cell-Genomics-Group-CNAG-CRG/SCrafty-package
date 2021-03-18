@@ -13,7 +13,8 @@ test_that("gene_enrichment_GO works", {
   GO_results <- gene_enrichment_GO(
     gene_de = gene_de,
     gene_universe = gene_universe,
-    gene_type = "SYMBOL",
+    gene_from  = "SYMBOL",
+    gene_to  = "ENTREZID",
     annotation = "org.Hs.eg.db",
     pvalue_cutoff = 0.05,
     test_direction = "over",

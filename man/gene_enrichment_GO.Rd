@@ -8,7 +8,8 @@ differentially expressed genes within the specified gene universe.}
 gene_enrichment_GO(
   gene_de,
   gene_universe,
-  gene_type = "SYMBOL",
+  gene_from = "SYMBOL",
+  gene_to = "ENTREZID",
   pvalue_cutoff = 0.05,
   test_direction = "over",
   annotation = "org.Hs.eg.db",
@@ -22,8 +23,12 @@ we want to test.}
 \item{gene_universe}{Vector of gene symbols or ensemble identifiers
 constituting the entire gene universe to test, rownames(se_obj).}
 
-\item{gene_type}{Character string specifying if the gene vector are SYMBOL or
-ENSEMBLE identifiers. By default SYMBOL, can also be ENSEMBL.}
+\item{gene_from}{Character string specifying the gene identifier is gene_vec,
+By default SYMBOL, can also be ENTREZID, ENSEMBL, UNIGENE}
+
+\item{gene_to}{Character string specifying what the gene id we want to
+convert the gene_vec to. By default ENTREZID, can also be SYMBOL, ENSEMBL,
+UNIGENE}
 
 \item{pvalue_cutoff}{Cutoff to use for the Pvalue}
 

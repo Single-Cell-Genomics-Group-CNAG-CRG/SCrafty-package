@@ -5,8 +5,11 @@
 #'   we want to test.
 #' @param gene_universe Vector of gene symbols or ensemble identifiers
 #'   constituting the entire gene universe to test, rownames(se_obj).
-#' @param gene_type Character string specifying if the gene vector are SYMBOL or
-#'    ENSEMBLE identifiers. By default SYMBOL, can also be ENSEMBL.
+#' @param gene_from Character string specifying the gene identifier is gene_vec,
+#'   By default SYMBOL, can also be ENTREZID, ENSEMBL, UNIGENE
+#' @param gene_to Character string specifying what the gene id we want to
+#'   convert the gene_vec to. By default ENTREZID, can also be SYMBOL, ENSEMBL,
+#'   UNIGENE
 #' @param pvalue_cutoff Cutoff to use for the Pvalue
 #' @param test_direction Character string which can be either "over" or "under".
 #'   This determines whether the test performed detects over or under
@@ -43,15 +46,20 @@
 
 gene_enrichment_GO <- function(gene_de,
                                gene_universe,
-                               gene_type  = "SYMBOL",
+                               gene_from  = "SYMBOL",
+                               gene_to = "ENTREZID",
                                pvalue_cutoff = 0.05,
                                test_direction = "over",
                                annotation = "org.Hs.eg.db",
                                ontology = "BP") {
   
   # Test valid input
-  if (!gene_type %in% c("SYMBOL", "ENSEMBL")) {
-    stop("gene_type has to be: SYMBOL or ENSEMBL")
+  if (!gene_from %in% c("SYMBOL", "ENSEMBL", "ENTREZID", "UNIGENE")) {
+    stop("gene_from has to be: SYMBOL or ENSEMBL")
+  }
+  
+  if (!gene_to %in% c("SYMBOL", "ENSEMBL", "ENTREZID", "UNIGENE")) {
+    stop("gene_to has to be: SYMBOL or ENSEMBL")
   }
   
   if (!annotation %in% c("org.Hs.eg.db", "org.Mm.eg.db")) {
@@ -63,11 +71,15 @@ gene_enrichment_GO <- function(gene_de,
   }
   
   # Convert Target genes from symbol/ensembl to entrezID
-  target_enrich <- convert_symb_entrez(gene_vec = unique(gene_de),
+  target_enrich <- convert_geneid(gene_vec = unique(gene_de),
+                                       gene_from = gene_from,
+                                       gene_to = gene_to,
                                        annotation = annotation)
 
   # Convert Universe genes from symbol/ensembl to entrezID
-  univers_g <- convert_symb_entrez(gene_vec = unique(gene_universe),
+  univers_g <- convert_geneid(gene_vec = unique(gene_universe),
+                                   gene_from = gene_from,
+                                   gene_to = gene_to,
                                    annotation = annotation)
 
   # Create a GOHyperGParams instance
