@@ -5,7 +5,7 @@
 \title{This function returns QC metric plots with Spatial Seurat objects.}
 \usage{
 qc_st_plots(
-  se_obj,
+  se,
   nfeat = "nFeature_Spatial",
   ncount = "nCount_Spatial",
   slot = "counts",
@@ -15,7 +15,7 @@ qc_st_plots(
 )
 }
 \arguments{
-\item{se_obj}{Spatial Seurat object we want to assess.}
+\item{se}{Spatial Seurat object we want to assess.}
 
 \item{nfeat}{Character string indicating the name of the variable in the
 metadata containing the number of genes.}
