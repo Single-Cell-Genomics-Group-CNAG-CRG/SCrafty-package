@@ -55,7 +55,14 @@ correlation_heatmap <- function(
     
     # Subset expression matrix to genes of interest
     genes_sub <- genes[genes %in% rownames(expr_mtrx)]
-    mtrx_genes <- t(as.matrix(expr_mtrx[genes_sub, ]))
+    
+    # Deal with behaviour of creating a matrix with just 1 row
+    if(length(genes_sub) == 1) {
+      mtrx_genes <- as.matrix(expr_mtrx[genes_sub, ])
+      colnames(mtrx_genes) <- genes_sub
+    } else if (length(genes_sub) > 1) {
+      mtrx_genes <- t(as.matrix(expr_mtrx[genes_sub, ]))
+    }
   }
   
   # Extract features of interest
