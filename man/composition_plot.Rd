@@ -13,7 +13,8 @@ composition_plot(
   col_df = NULL,
   x_order = NULL,
   grouping_order = NULL,
-  title = ""
+  title = "",
+  label = FALSE
 )
 }
 \arguments{
@@ -38,6 +39,9 @@ in the desired order}
 
 \item{title}{character string indicating the plot title, by default and
 empty string ""}
+
+\item{label}{Logical vector indicating if we want to show proportion labels
+in the tile plot. By default FALSE.}
 }
 \value{
 Composition plot
@@ -54,22 +58,22 @@ library(SeuratData)
 se_obj <- SeuratData::LoadData(ds = "pbmcsca")
 
 col_df <- data.frame(
-  "name" = unique(se_obj@meta.data$Method),
-  "color" = terrain.colors(9)
+  "name" = unique(se_obj@meta.data$CellType),
+  "color" = terrain.colors(10)
 )
 
-x_order <- c("Cytotoxic T cell", "CD4+ T cell", "CD14+ monocyte", "B cell",
+grouping_order <- c("Cytotoxic T cell", "CD4+ T cell", "CD14+ monocyte", "B cell",
              "Megakaryocyte", "CD16+ monocyte", "Natural killer cell",
              "Dendritic cell", "Plasmacytoid dendritic cell", "Unassigned")
 SCrafty::composition_plot(
   metadata = se_obj@meta.data,
-  x = "CellType",
-  grouping_vr = "Method",
+  x = "Method",
+  grouping_vr = "CellType",
   gradient_col = rainbow(5),
   col_df = col_df,
-  x_order = x_order,
-  grouping_order = unique(se_obj@meta.data$Method),
-  title = "Cellular distribution of cells over clusters & methods"
+  x_order = unique(se_obj@meta.data$Method),
+  grouping_order = grouping_order,
+  title = "Distribution of cells over methods"
 )
 
 }

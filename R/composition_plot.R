@@ -15,6 +15,8 @@
 #' in the desired order
 #' @param title character string indicating the plot title, by default and
 #'    empty string ""
+#' @param label Logical vector indicating if we want to show proportion labels
+#'    in the tile plot. By default FALSE. 
 #' @return Composition plot
 #' @export
 #' @examples
@@ -25,28 +27,27 @@
 #' se_obj <- SeuratData::LoadData(ds = "pbmcsca")
 #' 
 #' col_df <- data.frame(
-#'   "name" = unique(se_obj@meta.data$Method),
-#'   "color" = terrain.colors(9)
+#'   "name" = unique(se_obj@meta.data$CellType),
+#'   "color" = terrain.colors(10)
 #' )
 #' 
-#' x_order <- c("Cytotoxic T cell", "CD4+ T cell", "CD14+ monocyte", "B cell",
+#' grouping_order <- c("Cytotoxic T cell", "CD4+ T cell", "CD14+ monocyte", "B cell",
 #'              "Megakaryocyte", "CD16+ monocyte", "Natural killer cell",
 #'              "Dendritic cell", "Plasmacytoid dendritic cell", "Unassigned")
 
 #' SCrafty::composition_plot(
 #'   metadata = se_obj@meta.data,
-#'   x = "CellType",
-#'   grouping_vr = "Method",
+#'   x = "Method",
+#'   grouping_vr = "CellType",
 #'   gradient_col = rainbow(5),
 #'   col_df = col_df,
-#'   x_order = x_order,
-#'   grouping_order = unique(se_obj@meta.data$Method),
-#'   title = "Cellular distribution of cells over clusters & methods"
+#'   x_order = unique(se_obj@meta.data$Method),
+#'   grouping_order = grouping_order,
+#'   title = "Distribution of cells over methods"
 #' )
 #' 
 #' }
-#' 
-
+#'
 
 composition_plot <- function(
   metadata,
@@ -56,7 +57,8 @@ composition_plot <- function(
   col_df = NULL,
   x_order = NULL,
   grouping_order = NULL,
-  title = "") {
+  title = "",
+  label = FALSE) {
   
   # Set pipe operator
   `%>%` <- magrittr::`%>%`
@@ -92,6 +94,10 @@ composition_plot <- function(
     ggplot2::theme(
       axis.text.x = ggplot2::element_blank()
       ) +
+    # Add personalized color palette if specified
+    { if (label) ggplot2::scale_fill_manual(
+      values = col_df$color,
+      breaks = col_df$name) } +
     ggplot2::labs(
       x = "",
       y = "# of cells",
@@ -100,6 +106,7 @@ composition_plot <- function(
   # Tile plot with intensity colored by proportion
   tile_plt <- count_df %>%
     dplyr::group_by(x, .drop = FALSE) %>%
+    # Proportion of x within each class in groping_vr
     dplyr::mutate(Proportion = n / sum(n) * 100) %>%
     dplyr::ungroup() %>%
     ggplot2::ggplot(
@@ -109,6 +116,8 @@ composition_plot <- function(
         y = grouping_vr,
         fill = Proportion)) +
     ggplot2::geom_tile(color = "grey") +
+    # Add proportion plot in tile plot
+    { if (label) ggplot2::geom_text(ggplot2::aes(label = round(Proportion, 2))) } +
     ggplot2::theme_minimal() +
     ggplot2::scale_fill_gradientn(colours = gradient_col) +
     ggplot2::theme(
@@ -136,21 +145,11 @@ composition_plot <- function(
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank()
     ) +
+    # Add personalized color palette if specified
+    { if (label) ggplot2::scale_fill_manual(
+      values = col_df$color,
+      breaks = col_df$name) } +
     ggplot2::labs(y = "% of cells", x = "")
-  
-  # Add personalized color palette if specified
-  if (!is.null(col_df)) {
-    col_plot <- col_plot +
-      ggplot2::scale_fill_manual(
-        values = col_df$color,
-        breaks = col_df$name)
-    
-    tile_color <- tile_color +
-      ggplot2::scale_fill_manual(
-        values = col_df$color,
-        breaks = as.character(col_df$name))
-    
-  }
   
   patchwork::plot_spacer() + col_plot + tile_color + tile_plt +  
     patchwork::plot_layout(widths = c(0.1, 1)) +
