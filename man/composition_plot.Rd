@@ -2,14 +2,15 @@
 % Please edit documentation in R/composition_plot.R
 \name{composition_plot}
 \alias{composition_plot}
-\title{This function returns a plot composition representing the absolute number 
-and proportion of a variable grouped by a feature of interest.}
+\title{This function returns a list where the 1st element is plot composition
+representing the absolute number and proportion of a variable grouped by a
+feature of interest and the 2nd are the individual plots..}
 \usage{
 composition_plot(
   metadata,
   x,
   grouping_vr,
-  gradient_col = c("#fffedb", "#ffc157", "#fa5e25"),
+  gradient_col = c("#7ab2ff", "#ffc157", "#fa5e25"),
   col_df = NULL,
   x_order = NULL,
   grouping_order = NULL,
@@ -47,8 +48,9 @@ in the tile plot. By default FALSE.}
 Composition plot
 }
 \description{
-This function returns a plot composition representing the absolute number 
-and proportion of a variable grouped by a feature of interest.
+This function returns a list where the 1st element is plot composition
+representing the absolute number and proportion of a variable grouped by a
+feature of interest and the 2nd are the individual plots..
 }
 \examples{
 \dontrun{
@@ -73,7 +75,8 @@ SCrafty::composition_plot(
   col_df = col_df,
   x_order = unique(se_obj@meta.data$Method),
   grouping_order = grouping_order,
-  title = "Distribution of cells over methods"
+  title = "Distribution of cells over methods",
+  label = TRUE
 )
 
 }
