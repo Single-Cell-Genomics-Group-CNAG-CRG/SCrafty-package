@@ -17,14 +17,14 @@ You can install the released version of CNAGSCG from
 with:
 
 ``` r
-devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "main")
+devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "main")
 ```
 
 And the development version with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "devel")
+devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "devel")
 ```
 
 ## Before we begin
