@@ -260,5 +260,5 @@ df <- data.frame(x = 1:10, y = 1:10)
 tmp_plt <- ggplot2::ggplot(df, ggplot2::aes(x = x, y = y)) + 
   ggplot2::geom_point()
 
-CNAGSCG::ggpreview(x = tmp_plt, w = 9, h = 4)
+SCrafty::ggpreview(x = tmp_plt, w = 9, h = 4)
 ```
