@@ -17,14 +17,14 @@ You can install the released version of CNAGSCG from
 with:
 
 ``` r
-devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "main")
+devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "main")
 ```
 
 And the development version with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "devel")
+devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "devel")
 ```
 
 ## Before we begin
@@ -260,5 +260,5 @@ df <- data.frame(x = 1:10, y = 1:10)
 tmp_plt <- ggplot2::ggplot(df, ggplot2::aes(x = x, y = y)) + 
   ggplot2::geom_point()
 
-CNAGSCG::ggpreview(x = tmp_plt, w = 9, h = 4)
+SCrafty::ggpreview(x = tmp_plt, w = 9, h = 4)
 ```
