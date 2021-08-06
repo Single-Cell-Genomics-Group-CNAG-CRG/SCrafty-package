@@ -54,7 +54,7 @@ human_gene_to_mouse <- function(x){
 #' 
 #' }
 #' 
-convertMouseGeneList <- function(x){
+mouse_gene_to_human <- function(x){
   require("biomaRt")
   human = useMart("ensembl", dataset = "hsapiens_gene_ensembl")
   mouse = useMart("ensembl", dataset = "mmusculus_gene_ensembl")
