@@ -27,6 +27,12 @@ And the development version with:
 devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "devel")
 ```
 
+If you need the GitHub PAT to install the package you can set it in R by:
+```r
+## set personal access token:
+credentials::set_github_pat("YourPAT")
+```
+
 ## Before we begin
 
 Keep in mind that these being a shared package maintained by us all it
