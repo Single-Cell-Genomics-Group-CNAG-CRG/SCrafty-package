@@ -22,7 +22,10 @@ mean_variance_plot <- function(se_obj, assay, slot) {
   `%>%` <- magrittr::`%>%`
   
   # Extract count matrix
-  count_mtrx <- Seurat::GetAssayData(object = se_obj, assay = assay, slot = slot)
+  count_mtrx <- Seurat::GetAssayData(
+    object = se_obj,
+    assay = assay,
+    slot = slot)
   
   # Get mean and variance from each gene
   gene_attr <- data.frame(

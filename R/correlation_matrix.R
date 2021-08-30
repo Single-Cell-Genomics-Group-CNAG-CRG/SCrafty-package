@@ -57,7 +57,7 @@ correlation_heatmap <- function(
     genes_sub <- genes[genes %in% rownames(expr_mtrx)]
     
     # Deal with behaviour of creating a matrix with just 1 row
-    if(length(genes_sub) == 1) {
+    if (length(genes_sub) == 1) {
       mtrx_genes <- as.matrix(expr_mtrx[genes_sub, ])
       colnames(mtrx_genes) <- genes_sub
     } else if (length(genes_sub) > 1) {
@@ -94,7 +94,7 @@ correlation_heatmap <- function(
   mtrx_cor <- cor(as.matrix(mtrx))
   
   # Compute correlation P-value
-  p.mat <- corrplot::cor.mtest(mat = mtrx,
+  p_mat <- corrplot::cor.mtest(mat = mtrx,
                                conf_int = 0.95,
                                method = cor_method)
   
@@ -107,7 +107,7 @@ correlation_heatmap <- function(
   # Plot correlation matrix as a heatmap
   ggcorrplot::ggcorrplot(
     corr = mtrx_cor,
-    p.mat = p.mat[[1]],
+    p.mat = p_mat[[1]],
     hc.order = TRUE,
     type = "full",
     insig = "blank",

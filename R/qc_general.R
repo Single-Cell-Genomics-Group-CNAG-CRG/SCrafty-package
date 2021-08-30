@@ -36,7 +36,8 @@ gene_count_hist <- function(
 
   # Dataframe containing how many reads per gene and on how many spots that
   # gene is found
-  gene_attr <- lapply(as.character(unique(se@meta.data[, sample_id])), function(id) {
+  gene_attr <- lapply(as.character(unique(se@meta.data[, sample_id])),
+                      function(id) {
     
     # Subset matrix to sample of interest
     sub_mtrx <- count_mtrx[, se@meta.data[, sample_id] == id]

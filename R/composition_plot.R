@@ -1,6 +1,6 @@
 #' This function returns a list where the 1st element is plot composition
 #' representing the absolute number and proportion of a variable grouped by a
-#' feature of interest and the 2nd are the individual plots.. 
+#' feature of interest and the 2nd are the individual plots 
 #'
 #' @param metadata metadata from the Seurat object - se_obj\@meta.data
 #' @param x character string indicating the X axis - cell type annotation
@@ -17,7 +17,7 @@
 #' @param title character string indicating the plot title, by default and
 #'    empty string ""
 #' @param label Logical vector indicating if we want to show proportion labels
-#'    in the tile plot. By default FALSE. 
+#'    in the tile plot. By default FALSE.
 #' @return Composition plot
 #' @export
 #' @examples
@@ -26,16 +26,15 @@
 #' library(SeuratData)
 #' # SeuratData::InstallData(ds = "pbmcsca")
 #' se_obj <- SeuratData::LoadData(ds = "pbmcsca")
-#' 
+#'
 #' col_df <- data.frame(
 #'   "name" = unique(se_obj@meta.data$CellType),
 #'   "color" = terrain.colors(10)
 #' )
-#' 
-#' grouping_order <- c("Cytotoxic T cell", "CD4+ T cell", "CD14+ monocyte", "B cell",
-#'              "Megakaryocyte", "CD16+ monocyte", "Natural killer cell",
-#'              "Dendritic cell", "Plasmacytoid dendritic cell", "Unassigned")
-
+#'
+#' grouping_order <- c("Cytotoxic T cell", "CD4+ T cell", "CD14+ monocyte",
+#' "B cell", "Megakaryocyte", "CD16+ monocyte", "Natural killer cell",
+#' "Dendritic cell", "Plasmacytoid dendritic cell", "Unassigned")
 #' SCrafty::composition_plot(
 #'   metadata = se_obj@meta.data,
 #'   x = "Method",
@@ -47,7 +46,7 @@
 #'   title = "Distribution of cells over methods",
 #'   label = TRUE
 #' )
-#' 
+#'
 #' }
 #'
 
@@ -61,10 +60,10 @@ composition_plot <- function(
   grouping_order = NULL,
   title = "",
   label = FALSE) {
-  
+
   # Set pipe operator
   `%>%` <- magrittr::`%>%`
-  
+
   # Set the grouping and X variable levels if specified
   if (! is.null(grouping_order)) {
     lvl_grp <- grouping_order
@@ -80,7 +79,8 @@ composition_plot <- function(
     lvl_x <- sort(unique(metadata[, x]))
   }
   
-  # Rename and convert features of interest to factor since if not count will remove non-existent levels
+  # Rename and convert features of interest to factor since if not
+  # count will remove non-existent levels
   metadata[, "x"] <- factor(metadata[, x], levels = lvl_x)
   
   metadata[, "grouping_vr"] <- factor(metadata[, grouping_vr],

@@ -35,6 +35,12 @@ And the development version with:
 devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "devel")
 ```
 
+If you need [set the GitHub PAT in R](https://gist.github.com/Z3tt/3dab3535007acf108391649766409421) to install the package you can set it in R by:
+``` r
+## set personal access token:
+credentials::set_github_pat("YourPAT")
+```
+
 ## Before we begin
 Keep in mind that these being a shared package maintained by us all it is important we stick to consistent best practices so we can all read other peoples code and contribute on top of each other. When adding new functions or modifying pre-existing ones please use **pull requests** so someone else can check your code prior to merging in the main branch.\
 * Best practices on how to write an R package are detailed in Hadley Wickham's [book](https://r-pkgs.org/).\
@@ -48,7 +54,7 @@ After adding a new function make sure everything runs smoothly by:\
 1- running `devtools::load_all()`, this runs a mock build of the package and allows you to test the function runs correctly within the package environment. \
 2- running `devtools::document()`to build the documentation for the function in `man/` and `NAMESPACE`. Check will return error if the documentation for a function in `R/` is not present. \
 3- running `devtools::check()`, after making sure the function runs well we need to be sure that all the moving parts of the package still work in the package environment. `devtools::check()`is the equivalent of running `R CMD check` in the terminal. \
-4- Add a unit test for the function via `devtools::use_test("fbind")`. This will open an rscript named **test-fbind.R** in `test/testthat`. To check that all the unit tests runs properly you can run `devtools::test()`. \
+4- Add a unit test for the function via `usethis::use_test("fbind")`. This will open an rscript named **test-fbind.R** in `test/testthat`. To check that all the unit tests runs properly you can run `devtools::test()`. \
 5- Lastly, if you add an example in `README.Rmd` compile it using `devtools::build_readme()`. \
 Bonus, if your package requires a dependency not found the file DESCRITPION section imports you can add it by running `usethis::use_package("dplyr")`.
 
