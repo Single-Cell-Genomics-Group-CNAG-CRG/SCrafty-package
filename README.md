@@ -74,7 +74,7 @@ documentation for a function in `R/` is not present.
 we need to be sure that all the moving parts of the package still work
 in the package environment. `devtools::check()`is the equivalent of
 running `R CMD check` in the terminal.  
-4- Add a unit test for the function via `devtools::use_test("fbind")`.
+4- Add a unit test for the function via `usethis::use_test("fbind")`.
 This will open an rscript named **test-fbind.R** in `test/testthat`. To
 check that all the unit tests runs properly you can run
 `devtools::test()`.  
