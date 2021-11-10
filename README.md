@@ -15,7 +15,7 @@ You can install the released version of CNAGSCG from
 [GitHub](https://github.com/Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package/blob/main/README.md)
 with:
 
-    devtools::install_github(" Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "main")
+    devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "main")
 
 And the development version with:
 
