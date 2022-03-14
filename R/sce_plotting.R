@@ -173,7 +173,8 @@ plotVln <- function(
     
     # Extract gene expression
     col_sub <- intersect(feats, rownames(x))
-    exp_mtrx <- as.matrix(t(logcounts(x)[col_sub, ]))
+    lc_mtrx <- logcounts(x)
+    exp_mtrx <- as.matrix(t(lc_mtrx[col_sub, ]))
     
     # Add gene expression to dataframe
     df <- cbind(df, exp_mtrx)
