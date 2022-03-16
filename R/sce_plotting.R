@@ -76,7 +76,7 @@ plotDimRed <- function(
             } else if (i %in% rownames(x)) {
                 df[, "color"] <- logcounts(x)[i, ]
             } else {
-                stop(paste("Feature", i, "not present"))
+                warning(paste("Feature", i, "not present"))
             }
             
             # Return plot
@@ -171,21 +171,34 @@ plotVln <- function(
     df <- colData(x) %>%
         data.frame()
     
+    # Extract features
+    fi <- intersect(feats, colnames(colData(x)))
+    if (fi)
     # Extract gene expression
-    col_sub <- intersect(feats, rownames(x))
+    gi <- intersect(feats, rownames(x))
     lc_mtrx <- logcounts(x)
-    exp_mtrx <- as.matrix(t(lc_mtrx[col_sub, ]))
+    print(lc_mtrx[1:5, 1:5])
+    print(gi)
+    exp_mtrx <- as.matrix(t(lc_mtrx[gi, ]))
     
     # Add gene expression to dataframe
     df <- cbind(df, exp_mtrx)
     
     plt_ls <- lapply(feats, function(i) {
         
+        if (i %in% colnames(df)) {
+            df[, "color"] <- df[, i]
+        } else if (i %in% rownames(x)) {
+            df[, "color"] <- logcounts(x)[i, ]
+        } else {
+            warning(paste("Feature", i, "not present"))
+        }
+        
         plot_ind_vln(
             df = df,
             group = group,
             feat = i,
-            color = color,
+            color = "color",
             palette = palette,
             title = i)
     })
