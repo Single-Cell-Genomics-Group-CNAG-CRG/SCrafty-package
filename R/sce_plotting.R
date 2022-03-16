@@ -181,7 +181,7 @@ plotVln <- function(
     # exp_mtrx <- as.matrix(t(lc_mtrx[gi, ]))
     
     # Add gene expression to dataframe
-    df <- cbind(df, exp_mtrx)
+    # df <- cbind(df, exp_mtrx)
     
     plt_ls <- lapply(feats, function(i) {
         
