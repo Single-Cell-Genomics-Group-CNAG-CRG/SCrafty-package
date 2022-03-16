@@ -121,10 +121,10 @@ plotDimRed <- function(
 ######################
 #### Violin plots ####
 ######################
-plot_ind_vln <- function(df, group, feat, color = "#2b2b2b", palette, title = "", ...) {
+plot_ind_vln <- function(df, group, feat, color_by = group, palette, title = "", ...) {
     
     palette_length <- RColorBrewer::brewer.pal.info[palette, "maxcolors"]
-    nb.cols <- length(unique(df[, color]))
+    nb.cols <- length(unique(df[, color_by]))
     # color theme
     if (nb.cols > palette_length) {
         # Expand color palette 
@@ -141,8 +141,7 @@ plot_ind_vln <- function(df, group, feat, color = "#2b2b2b", palette, title = ""
         aes_string(
             x = group,
             y = feat,
-            fill = color,
-            color = color),
+            fill = color_by),
         ...) +
         geom_violin(alpha = 0.7, width = 1) +
         geom_boxplot(
