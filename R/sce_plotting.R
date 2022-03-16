@@ -172,14 +172,13 @@ plotVln <- function(
         data.frame()
     
     # Extract features
-    fi <- intersect(feats, colnames(colData(x)))
-    if (fi)
+    # fi <- intersect(feats, colnames(colData(x)))
+    
     # Extract gene expression
-    gi <- intersect(feats, rownames(x))
-    lc_mtrx <- logcounts(x)
-    print(lc_mtrx[1:5, 1:5])
-    print(gi)
-    exp_mtrx <- as.matrix(t(lc_mtrx[gi, ]))
+    # gi <- intersect(feats, rownames(x))
+    # lc_mtrx <- logcounts(x)
+    
+    # exp_mtrx <- as.matrix(t(lc_mtrx[gi, ]))
     
     # Add gene expression to dataframe
     df <- cbind(df, exp_mtrx)
