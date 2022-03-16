@@ -140,7 +140,7 @@ plot_ind_vln <- function(df, group, feat, color_by = group, palette, title = "",
     p <- ggplot(df,
         aes_string(
             x = group,
-            y = feat,
+            y = "color",
             fill = color_by),
         ...) +
         geom_violin(alpha = 0.7, width = 1) +
