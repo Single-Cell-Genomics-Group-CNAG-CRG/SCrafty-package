@@ -160,7 +160,7 @@ plotVln <- function(
     x,
     group,
     feats,
-    color,
+    color_by = group,
     pt_size = NULL,
     ncol = NULL,
     palette = "Set2",
@@ -196,11 +196,10 @@ plotVln <- function(
             df = df,
             group = group,
             feat = i,
-            color = "color",
+            color_by = color_by,
             palette = palette,
             title = i)
     })
     
     patchwork::wrap_plots(plt_ls, ncol = ncol)
 }
-
