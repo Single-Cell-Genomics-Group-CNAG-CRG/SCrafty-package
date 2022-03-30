@@ -100,6 +100,8 @@ plotDimRed <- function(
             df[, "color"] <- df[, color]
         } else if (color %in% rownames(x)) {
             df[, "color"] <- logcounts(x)[color, ]
+        } else {
+            warning(paste("Feature", color, "not present"))
         }
         
         p <- plot_ind_dimred(

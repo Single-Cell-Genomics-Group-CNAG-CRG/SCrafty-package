@@ -1,5 +1,6 @@
 findSubCluster <- function(
     object,
+    res,
     cluster,
     dimred = "PCA",
     res_sub = 0.25) {
