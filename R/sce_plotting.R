@@ -50,7 +50,7 @@ plotDimRed <- function(
     x,
     color,
     pt_size = 1,
-    dim = c("UMAP", "PCA", "TSNE", "HARMONY"),
+    dim = "UMAP",
     order = TRUE,
     ncol = NULL,
     palette = "Set2",
