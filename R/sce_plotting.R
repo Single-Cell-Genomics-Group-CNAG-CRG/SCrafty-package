@@ -50,7 +50,7 @@ plotDimRed <- function(
     x,
     color,
     pt_size = 1,
-    dim = SingleCellExperiment::reducedDims(x),
+    dim = "UMAP",
     order = TRUE,
     ncol = NULL,
     palette = "Set2",
@@ -61,7 +61,7 @@ plotDimRed <- function(
         data.frame()
     
     # Extract dim
-    dim <- match.arg(dim)
+    # dim <- match.arg(dim)
     coord <- data.frame(reducedDim(x, type = dim))
     names(coord) <- paste(dim, 1:ncol(coord), sep = "_")
     
