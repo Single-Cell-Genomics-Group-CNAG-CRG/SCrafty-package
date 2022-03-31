@@ -50,7 +50,7 @@ plotDimRed <- function(
     x,
     color,
     pt_size = 1,
-    dim = "UMAP",
+    dim = SingleCellExperiment::reducedDims(x),
     order = TRUE,
     ncol = NULL,
     palette = "Set2",
