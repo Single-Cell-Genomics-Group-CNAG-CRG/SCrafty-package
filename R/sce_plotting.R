@@ -54,6 +54,7 @@ plotDimRed <- function(
     order = TRUE,
     ncol = NULL,
     palette = "Set2",
+    assay = "logcounts",
     ...) {
     
     # Extract data from sce
@@ -74,7 +75,7 @@ plotDimRed <- function(
             if (i %in% colnames(df)) {
                 df[, "color"] <- df[, i]
             } else if (i %in% rownames(x)) {
-                df[, "color"] <- logcounts(x)[i, ]
+                df[, "color"] <- assay(x, assay)[i, ]
             } else {
                 warning(paste("Feature", i, "not present"))
             }
@@ -99,7 +100,7 @@ plotDimRed <- function(
         if (color %in% colnames(df)) {
             df[, "color"] <- df[, color]
         } else if (color %in% rownames(x)) {
-            df[, "color"] <- logcounts(x)[color, ]
+            df[, "color"] <- assay(x, assay)[color, ]
         } else {
             warning(paste("Feature", color, "not present"))
         }
@@ -123,7 +124,7 @@ plotDimRed <- function(
 ######################
 #### Violin plots ####
 ######################
-plot_ind_vln <- function(df, group, feat, color_by = group, palette, title = "", ...) {
+plot_ind_vln <- function(df, group, feat, color_by = group, palette, title = "",  ...) {
     
     palette_length <- RColorBrewer::brewer.pal.info[palette, "maxcolors"]
     nb.cols <- length(unique(df[, color_by]))
@@ -166,6 +167,7 @@ plotVln <- function(
     pt_size = NULL,
     ncol = NULL,
     palette = "Set2",
+    assay = "logcounts",
     ...) {
     
     # Extract data from sce
@@ -189,7 +191,7 @@ plotVln <- function(
         if (i %in% colnames(df)) {
             df[, "color"] <- df[, i]
         } else if (i %in% rownames(x)) {
-            df[, "color"] <- logcounts(x)[i, ]
+            df[, "color"] <- assay(x, assay)[i, ]
         } else {
             warning(paste("Feature", i, "not present"))
         }
@@ -202,6 +204,5 @@ plotVln <- function(
             palette = palette,
             title = i)
     })
-    
     patchwork::wrap_plots(plt_ls, ncol = ncol)
 }
