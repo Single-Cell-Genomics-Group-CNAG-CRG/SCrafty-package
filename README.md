@@ -15,12 +15,12 @@ You can install the released version of CNAGSCG from
 [GitHub](https://github.com/Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package/blob/main/README.md)
 with:
 
-    devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "main")
+    devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "main")
 
 And the development version with:
 
     # install.packages("devtools")
-    devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/CNAGSCG-package", ref = "devel")
+    devtools::install_github("Single-Cell-Genomics-Group-CNAG-CRG/SCrafty-package", ref = "devel")
 
 If you need [set the GitHub PAT in
 R](https://gist.github.com/Z3tt/3dab3535007acf108391649766409421) to
